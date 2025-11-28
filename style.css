@@ -1,0 +1,155 @@
+/* Menggunakan Font Poppins */
+:root {
+    --sidebar-bg: #111111; /* Hitam pekat untuk sidebar */
+    --main-bg: #f3f4f6;    /* Abu-abu sangat muda untuk background konten */
+    --pastel-blue: #e3f5ff;
+    --pastel-purple: #f3e8ff;
+    --pastel-green: #e5f6ea;
+    --pastel-yellow: #fff7d6;
+    --black-btn: #000000;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--main-bg);
+    overflow-x: hidden;
+    color: #333;
+}
+
+/* --- SIDEBAR BARU --- */
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -17rem;
+    transition: margin 0.25s ease-out;
+    width: 17rem;
+    background-color: var(--sidebar-bg); /* Sidebar Hitam */
+    border-radius: 0 20px 20px 0; /* Lengkungan di kanan sidebar */
+}
+
+#sidebar-wrapper .list-group {
+    width: 17rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    transition: margin 0.25s ease-out;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+/* Item List Sidebar */
+.list-group-item {
+    border: none;
+    padding: 15px 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Style saat menu aktif (seperti di desain: ada indikator di kiri) */
+.list-group-item.active {
+    background-color: transparent;
+    color: #ffffff !important;
+    font-weight: 600;
+    position: relative;
+}
+
+.list-group-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 4px;
+    background-color: #e5f6ea; /* Aksen hijau muda */
+    border-radius: 0 4px 4px 0;
+}
+
+/* Hover effect sidebar */
+.list-group-item:hover {
+    color: #fff !important;
+}
+
+/* --- CARDS & COLORS --- */
+.bg-pastel-blue { background-color: var(--pastel-blue); }
+.bg-pastel-purple { background-color: var(--pastel-purple); }
+.bg-pastel-green { background-color: var(--pastel-green); }
+
+.card-stat {
+    transition: transform 0.2s;
+}
+.card-stat:hover {
+    transform: translateY(-5px);
+}
+
+/* --- TOMBOL --- */
+.btn-black {
+    background-color: var(--black-btn);
+    color: white;
+    border: none;
+    transition: all 0.3s;
+}
+.btn-black:hover {
+    background-color: #333;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* --- TABLE STYLING --- */
+.table th {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 15px;
+}
+
+.table td {
+    padding: 15px 0;
+    font-weight: 500;
+}
+
+/* Menghilangkan border default table bootstrap yang keras */
+.table > :not(caption) > * > * {
+    border-bottom-color: #f0f0f0;
+}
+
+/* Tombol Aksi di Tabel */
+.btn-action {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+
+/* --- RESPONSIVE FIX --- */
+/* Ubah dari 768px menjadi 992px (lg) */
+@media (min-width: 992px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Di desktop, tombol toggle akan menyembunyikan sidebar */
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -17rem;
+    }
+}
+
